@@ -1,0 +1,61 @@
+.body{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    background-color: #34349A;
+    width: 100%;
+}
+
+
+
+.row {
+    width: 100%;
+    max-width: 100%;
+    /* text-align: center; */
+}
+
+h2 {
+    font-size: 35px;
+    font-weight: 600;
+    color: white;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.login-input {
+    width: 100%;
+    /* background-color: white; */
+    border-radius: 10px;
+    
+
+}
+
+::ng-deep.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: white;
+}
+
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px !important;
+    background: white;
+    padding: .75em .75em 0 .75em !important;
+}
+
+.login-button {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    margin-top: 1rem;
+}
+
+  
+h2, p {
+    color: white;
+}
+

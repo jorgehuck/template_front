@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+          (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>SISREC</span>
+  <span class="example-spacer"></span>
+  <button mat-button>
+    <span>Juan Carlos</span>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    Start
+  </mat-sidenav>
+  <mat-sidenav>Start</mat-sidenav>
+  <mat-sidenav position="end">End</mat-sidenav>
+  <section>Main</section>
+
+  <mat-sidenav-content>
+    <app-requests></app-requests>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

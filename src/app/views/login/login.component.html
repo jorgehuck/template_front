@@ -1,0 +1,31 @@
+<div class="body">
+  <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+  
+  <div class="login" style="margin-right: 10rem" *ngIf="!loading">
+    <h2>Iniciar Sesión</h2>
+    <p>Usuario</p>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onLogin()">
+      <mat-form-field class="login-input">
+        <mat-label>Ingresar nombre de usuario</mat-label>
+        <input matInput formControlName="username"/>
+      </mat-form-field>
+      <p>Contraseña</p>
+      <mat-form-field class="login-input">
+        <mat-label>Ingresar Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+    
+      <button mat-button class="login-button" type="submit">
+        Aceptar
+      </button>
+    </form>
+  </div>
+  
+  <div style="height: 50%; border: 1px solid white" *ngIf="!loading"></div>
+  <div style="margin-left: 10rem" *ngIf="!loading">
+    <h2>SISREC</h2>
+  </div>
+
+  
+</div>

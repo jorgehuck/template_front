@@ -1,0 +1,177 @@
+<mat-toolbar color="primary">
+  <span>SISREC</span>
+</mat-toolbar>
+
+<div class="body">
+  <div *ngIf="show_message; else elseBlock" class="thanks">
+    {{ message }}
+  </div>
+
+  <ng-template #elseBlock>
+    <div class="card-1">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title
+            ><h1>Reclamo ID {{ id }}</h1></mat-card-title
+          >
+          <mat-card-subtitle>Datos del reclamo</mat-card-subtitle>
+        </mat-card-header>
+        <div class="grid" id="card_reclamo">
+          <div>
+            <b>CUIT:</b>
+          </div>
+          <div>
+            {{ rd.cuit }}
+          </div>
+          <div>
+            <b>RAZON SOCIAL:</b>
+          </div>
+          <div>
+            {{ rd.razon_social }}
+          </div>
+          <div>
+            <b>An8:</b>
+          </div>
+          <div>
+            {{ rd.an8 }}
+          </div>
+          <div>
+            <b>EMAIL:</b>
+          </div>
+          <div>
+            {{ rd.email }}
+          </div>
+          <div>
+            <b>FECHA DEL RECLAMO:</b>
+          </div>
+          <div>
+            {{ rd.fecha_reclamo }}
+          </div>
+          <div>
+            <b>FECHA DEL COMPROBANTE:</b>
+          </div>
+          <div>
+            {{ rd.fecha_comprobante | date: "short" }}
+          </div>
+          <div>
+            <b>ESTADO:</b>
+          </div>
+          <div>
+            {{ rd.estado }}
+          </div>
+          <div>
+            <b>TIPO IMPUESTO:</b>
+          </div>
+          <div>
+            {{ rd.tipo_impuesto }}
+          </div>
+          <div>
+            <b>TIPO COMPROBANTE:</b>
+          </div>
+          <div>
+            {{ rd.tipo_comprobante }}
+          </div>
+          <div>
+            <b>COMPROBANTE:</b>
+          </div>
+          <div>
+            {{ rd.comprobante }}
+          </div>
+          <div>
+            <b>RETENCIÓN:</b>
+          </div>
+          <div>
+            {{ rd.retencion }}
+          </div>
+          <div>
+            <b>ORIGEN:</b>
+          </div>
+          <div>
+            {{ rd.Origen?.nombre }}
+          </div>
+          <div>
+            <b>DESCRIPCIÓN:</b>
+          </div>
+          <div>
+            {{ rd.descripcion }}
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="card-2">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><h1>Formulario de Respuesta</h1></mat-card-title>
+          <mat-card-subtitle
+            >Por favor, complete la información solicitada para poder enviar el
+            formulario.
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <form [formGroup]="formGroup">
+          <mat-card-content>
+            <div class="dual-input" style="margin-top: 1rem">
+              <div style="width: 100%; padding-right: 1rem; margin-top: 1rem">
+                <mat-form-field appearance="outline" style="width: 100%">
+                  <mat-label>Nombre de usuario</mat-label>
+                  <input
+                    formControlName="usuario"
+                    required
+                    matInput
+                    placeholder="Escribir aquí..."
+                  />
+                </mat-form-field>
+              </div>
+              <div style="width: 100%; margin-top: 1rem">
+                <mat-form-field
+                  class=""
+                  appearance="outline"
+                  style="width: 100%"
+                >
+                  <mat-label>Tipo de Plantilla</mat-label>
+                  <mat-select formControlName="template_id">
+                    <mat-option
+                      *ngFor="let tipo of lisTemplates"
+                      [value]="tipo.id"
+                      >{{ tipo.nombre }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <ejs-richtexteditor #defaultRTE formControlName="respuesta">
+            </ejs-richtexteditor>
+
+            <div style="margin-top: 1rem">
+              <input
+                #fileUpload
+                multiple
+                hidden="true"
+                type="file"
+                onclick="this.value=null"
+                [accept]="requiredFileType"
+                (change)="fileInputChange($event)"
+              />
+              <button
+                mat-flat-button
+                color="primary"
+                (click)="fileUpload.click()"
+              >
+                Seleccione archivo
+              </button>
+
+              <div>{{ fileName }}</div>
+              <input type="hidden" formControlName="archivo_b64" />
+              <input type="hidden" formControlName="archivo_name" />
+            </div>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-raised-button (click)="onSubmit()">Responder</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+  </ng-template>
+</div>

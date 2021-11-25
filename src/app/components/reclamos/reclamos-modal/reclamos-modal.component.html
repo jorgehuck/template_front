@@ -1,0 +1,82 @@
+<h1 mat-dialog-title>Reclamo</h1>
+<div mat-dialog-content>
+  <div class="grid">
+    <div>
+      <div class="grid-item">
+        <div mat-line><b>CUIT</b></div>
+        <div mat-line>{{ rd.cuit }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>AN8</b></div>
+        <div mat-line>{{ rd.an8 }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>FECHA RECLAMO</b></div>
+        <div mat-line>{{ rd.fecha_reclamo }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>TIPO COMPROBANTE</b></div>
+        <div mat-line>{{ rd.tipo_comprobante }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>COMPROBANTE</b></div>
+        <div mat-line>{{ rd.comprobante }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>DESCRIPCIÓN</b></div>
+        <div mat-line>{{ rd.descripcion }}</div>
+      </div>
+    </div>
+    <div>
+      <div class="grid-item">
+        <div mat-line><b>RAZÓN SOCIAL</b></div>
+        <div mat-line>{{ rd.razon_social }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>EMAIL</b></div>
+        <div mat-line>{{ rd.email }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>ESTADO</b></div>
+        <div mat-line>{{ rd.estado }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>TIPO IMPUESTO</b></div>
+        <div mat-line>{{ rd.tipo_impuesto }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>RETENCIÓN</b></div>
+        <div mat-line>{{ rd.retencion }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>ORIGEN</b></div>
+        <div mat-line>{{ rd.Origen?.nombre }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- respuesta -->
+  <h1 mat-dialog-title>Respuesta</h1>
+  <div class="grid">
+    <div>
+      <div class="grid-item">
+        <div mat-line><b>FECHA</b></div>
+        <div mat-line>{{ respuesta?.createdAt }}</div>
+      </div>
+      <div class="grid-item">
+        <div mat-line><b>USUARIO</b></div>
+        <div mat-line>{{ respuesta?.usuario }}</div>
+      </div>
+    </div>
+    <div>
+      <div class="grid-item">
+        <div mat-line><b>RESPUESTA</b></div>
+        <div mat-line>{{ respuesta?.respuesta }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+</div>

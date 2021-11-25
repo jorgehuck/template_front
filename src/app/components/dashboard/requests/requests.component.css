@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+  }
+
+  .title {
+    padding: 24px;
+    font-size: 30px;
+    font-weight: 400;
+    background: white;
+  }
+
+  hr {
+    width: 100%;
+    margin-left: 20px;
+  }
+  
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px !important;
+    border: 1px solid lightgray;
+    background: white;
+    padding: .75em .75em 0 .75em !important;
+}

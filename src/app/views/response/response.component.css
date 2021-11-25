@@ -1,0 +1,58 @@
+.body{
+    display: flex;
+    justify-content: center;
+    /* height: 100%; */
+    /* align-items: center; */
+    width: 100%;
+}
+
+.dual-input {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+}
+
+ .card-1 {
+     width: 70%;
+     padding: 10px;
+
+ }
+
+ .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    display: block;
+    height: 38px;
+    font-size: 14px;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    padding: 0;
+}
+
+ .card-2 {
+     width: 100%;
+     padding: 10px;
+ }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* This is better for small screens, once min() is better supported */
+  /* grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); */
+  gap: 1rem;
+}
+
+.thanks{
+    margin-top: 100px;
+    color:seagreen;
+    font-weight: bold;
+    font-size: large;
+}
+
+textarea.mat-input-element
+{
+    height: 200px;
+}
+.debug{
+    border: 1px solid red !important;
+  }

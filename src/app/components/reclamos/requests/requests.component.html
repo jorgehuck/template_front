@@ -1,0 +1,103 @@
+<div style="background-color: white">
+  <div class="title">
+    <span>Reclamos</span>
+  </div>
+  <hr />
+
+  <div style="padding: 10px">
+    <div class="row">
+      <div style="width: 100%">
+        <form [formGroup]="formGroup" (keyup)="onKeyUp($event)">
+          <mat-form-field style="width: 30%">
+            <mat-label>Buscar...</mat-label>
+            <input matInput formControlName="stringSearch" type="text"/>
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+
+    <div >
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        matSortDisableClear
+        matSortActive="id"
+        matSortDirection="asc"
+      >
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="cuit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>CUIT</th>
+          <td mat-cell *matCellDef="let element">{{ element.cuit }}</td>
+        </ng-container>
+        <ng-container matColumnDef="razon_social">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Razón Social
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.razon_social }}</td>
+        </ng-container>
+        <ng-container matColumnDef="an8">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>AN8</th>
+          <td mat-cell *matCellDef="let element">{{ element.an8 }}</td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="origen_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Origen</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element?.Origen.nombre }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha_reclamo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.fecha_reclamo }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+          <!-- <td mat-cell *matCellDef="let element">  </td> -->
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="reclamoShow(element.id)"
+            >
+              <mat-icon>visibility</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="reclamoResponse(element.id)"
+            >
+              <mat-icon>drafts</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[10]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+table {
+  width: 100%;
+}
+
+.title {
+  padding: 24px;
+  font-size: 30px;
+  font-weight: 400;
+  background: white;
+}
+
+hr {
+  width: 100%;
+  margin-left: 20px;
+}
+
+.row{
+  display: flex;
+  /* justify-content: center; */
+  height: 100%;
+  align-items: center;
+  width: 100%;
+}
+
+.mat-header-cell{
+  text-transform: capitalize;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 10px !important;
+  border: 1px solid lightgray;
+  background: white;
+  padding: .75em .75em 0 .75em !important;
+}
+
+.mat-column-tipo,
+.mat-column-origen 
+{
+  width: 7%;
+}
+.mat-column-nombre
+{
+  width: 10%;
+}
+
+.mat-column-createdAt,
+.mat-column-acciones
+{
+  width: 15%;
+  text-align: center;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}

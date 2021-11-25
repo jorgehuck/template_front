@@ -1,0 +1,76 @@
+<div class="container">
+  <h1>Agregar Plantilla de Email</h1>
+  <p>
+    Por favor, complete la información solicitada para poder agregar una nueva
+    plantilla de email.
+  </p>
+
+  <div style="margin: 3rem 50%">
+    <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+  </div>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" *ngIf="!loading">
+    <div>
+      <table class="" cellspacing="0" style="width: 100%">
+        <tr>
+          <td>
+            <mat-form-field class="" appearance="fill" style="width: 100%">
+              <mat-label>Origen</mat-label>
+              <mat-select formControlName="origen_id" required>
+                <mat-option
+                  *ngFor="let origen of listOrigenes"
+                  [value]="origen.id"
+                  >{{ origen.nombre }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="" appearance="fill" style="width: 100%">
+              <mat-label>Tipo de Plantilla</mat-label>
+              <mat-select formControlName="tipo_template_id" required>
+                <mat-option
+                  *ngFor="let tipo of listTiposTemplates"
+                  [value]="tipo.id"
+                  >{{ tipo.value }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="" appearance="fill" style="width: 100%">
+              <mat-label>Nombre (obligatorio)</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Escribir aquí..."
+                formControlName="nombre"
+                required
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="margin-top: 0.5rem">
+      <span>Contenido (obligatorio)</span>
+
+      <ejs-richtexteditor
+        #createRTE
+        formControlName="contenido"
+      ></ejs-richtexteditor>
+      
+    </div>
+
+    <div style="margin-top: 1rem">
+      <section>
+        <div class="example-button-row" style="text-align: right">
+          <button mat-raised-button color="primary">Agregar</button>
+        </div>
+      </section>
+    </div>
+  </form>
+
+  <p></p>
+</div>

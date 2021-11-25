@@ -1,0 +1,77 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-reclamos',
+  templateUrl: './reclamos.component.html',
+  styleUrls: ['./reclamos.component.css']
+})
+export class ReclamosComponent implements OnInit {
+
+  search:any = ''
+  dataSource = new MatTableDataSource<any>();
+  resultsLength = 0;
+  displayedColumns = ['id', 'cuit', 'razon_social', 'an8', 'email', 'origen_id', 'estado_id', 'acciones'];
+  formGroup = this.formBuilder.group({ stringSearch: '' });
+
+  @ViewChild(MatPaginator, {static: true})
+  paginator!: MatPaginator;
+  @ViewChild('sort1', {static: true})
+  sort!: MatSort;
+
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private reclamoService: ReclamoService,
+    public dialog: MatDialog,
+    public router: Router
+  ) {
+  }
+
+  ngAfterViewInit(): void {
+    this.sort.sortChange.subscribe(() => {
+      this.paginator.pageIndex = 0
+      this.loadTableData();
+    });
+    this.paginator?.page.subscribe(() => {
+      this.loadTableData();
+    })
+  }
+
+
+  ngOnInit(): void {
+    this.loadTableData()
+  }
+
+  onSearch(){
+    this.loadTableData();
+  }
+
+  onSearchClear(){
+    this.search = ''
+    this.loadTableData()
+  }
+
+  loadTableData() {
+    this.reclamoService.list(this.paginator, this.sort,this.search).subscribe((r: any) => {
+      // const {rows, count} = r;
+      // this.resultsLength = count;
+      this.dataSource = r;
+      console.log("loadTableData", r)
+    })
+  }
+
+  reclamoShow(reclamoId: any) {
+    const dialogRef = this.dialog.open(ReclamosModalComponent, {
+      width: '600px',
+      data: {reclamoId}
+    });
+  }
+
+  /**
+   * 
+   */
+   reclamoResponse(reclamoId: number) {
+    this.router.navigate([`/response/${reclamoId}`]);
+  }
+
+}
